@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:my_portfolio/constants/colors.dart';
 import 'package:my_portfolio/constants/size.dart';
+import 'package:my_portfolio/constants/skill_items.dart';
+import 'package:my_portfolio/utils/education_utils.dart';
+import 'package:my_portfolio/utils/project_utils.dart';
+import 'package:my_portfolio/widgets/certificate_card.dart';
 import 'package:my_portfolio/widgets/drawer_mobile.dart';
+import 'package:my_portfolio/widgets/education_card.dart';
 import 'package:my_portfolio/widgets/header_desktop.dart';
 import 'package:my_portfolio/widgets/header_mobile.dart';
 import 'package:my_portfolio/widgets/main_desktop.dart';
+import 'package:my_portfolio/widgets/main_mobile.dart';
+import 'package:my_portfolio/widgets/project_card.dart';
+import 'package:my_portfolio/widgets/skills_desktop.dart';
 // import 'package:my_portfolio/constants/nav_items.dart';
 // import 'package:my_portfolio/styles/style.dart';
 // import 'package:my_portfolio/widgets/site_logo.dart';
@@ -23,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
+    final screenHeight = screenSize.width;
     return LayoutBuilder(
       builder: (context, Constraints) {
         return Scaffold(
@@ -44,23 +53,123 @@ class _HomePageState extends State<HomePage> {
                     ScaffoldKey.currentState?.openEndDrawer();
                   },
                 ),
-              const MainDesktop(),
+              if (Constraints.maxWidth >= kMinWdithDesktop)
+                const MainDesktop()
+              else
+                const MainMobile(),
+
               //SKILLS
               Container(
-                height: 500,
-                width: double.maxFinite,
-                color: Colors.blueGrey,
+                width: screenWidth,
+                padding: const EdgeInsets.fromLTRB(24, 20, 25, 60),
+                color: CustomColor.bgLight1,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    //Title
+                    const Text(
+                      "What I can do",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColor.whitePrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+
+                    //Platforms and skills
+                    const SkillsDesktop(),
+                  ],
+                ),
               ),
               //PROJETCS
-              Container(height: 500, width: double.maxFinite),
-              //CONTACT
               Container(
-                height: 500,
-                width: double.maxFinite,
+                width: screenWidth,
+                padding: const EdgeInsets.fromLTRB(24, 20, 25, 60),
+                child: Column(
+                  children: [
+                    //Title
+                    const Text(
+                      "My Projects",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColor.whitePrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+
+                    //Projects Card
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 1000),
+                      child: Wrap(
+                        spacing: 25,
+                        runSpacing: 25,
+                        children: [
+                          for (int i = 0; i < myProjectUtils.length; i++)
+                            ProjectCardWidget(project: myProjectUtils[i]),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              //EDUCATION AND CERTIFICATION
+              Container(
+                padding: const EdgeInsets.fromLTRB(24, 20, 25, 60),
+                width: screenWidth,
                 color: Colors.blueGrey,
+                child: Column(
+                  children: [
+                    //Title
+                    const Text(
+                      "My Certification",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColor.whitePrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 1500),
+                      child: Wrap(
+                        spacing: 25,
+                        runSpacing: 25,
+                        children: [
+                          for (int i = 0; i < myCertificateUtils.length; i++)
+                            CertificateCard(certificate: myCertificateUtils[i]),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               //FOOTER
-              Container(height: 500, width: double.maxFinite),
+              Container(
+                padding: const EdgeInsets.fromLTRB(24, 20, 25, 60),
+                width: screenWidth,
+                child: Column(
+                  children: [
+                    //Title
+                    const Text(
+                      "Education",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColor.whitePrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 50),
+
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 2500),
+                      child: EducationCard(),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         );
