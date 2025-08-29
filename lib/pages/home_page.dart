@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                         color: CustomColor.whitePrimary,
                       ),
                     ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 25),
 
                     ConstrainedBox(
                       constraints: BoxConstraints(maxWidth: 2500),

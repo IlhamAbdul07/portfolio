@@ -14,13 +14,13 @@ class EducationUtils {
 
 List<EducationUtils> myEducationUtils = [
   EducationUtils(
-    image: "assets/projects/1.png",
+    image: "assets/educations/1.png",
     title: "CEP-CCIT Faculty of Engineering University of Indonesia",
     subtitle: "Professional Certificate in Network Admininstrator",
     date: "September 2018 - November 2020",
   ),
   EducationUtils(
-    image: "assets/projects/2.png",
+    image: "assets/educations/2.png",
     title: "Pamulang University",
     subtitle: "Bachelor of Computer Science, Employee Class Program",
     date: "July 2021 - July 2025",
