@@ -6,6 +6,8 @@ import 'package:my_portfolio/constants/skill_items.dart';
 import 'package:my_portfolio/utils/education_utils.dart';
 import 'package:my_portfolio/utils/project_utils.dart';
 import 'package:my_portfolio/widgets/certificate_card.dart';
+import 'package:my_portfolio/widgets/contact_section.dart';
+import 'package:my_portfolio/widgets/custom_textfield.dart';
 import 'package:my_portfolio/widgets/drawer_mobile.dart';
 import 'package:my_portfolio/widgets/education_card.dart';
 import 'package:my_portfolio/widgets/header_desktop.dart';
@@ -14,6 +16,7 @@ import 'package:my_portfolio/widgets/main_desktop.dart';
 import 'package:my_portfolio/widgets/main_mobile.dart';
 import 'package:my_portfolio/widgets/project_card.dart';
 import 'package:my_portfolio/widgets/skills_desktop.dart';
+import 'package:my_portfolio/widgets/skills_mobile.dart';
 // import 'package:my_portfolio/constants/nav_items.dart';
 // import 'package:my_portfolio/styles/style.dart';
 // import 'package:my_portfolio/widgets/site_logo.dart';
@@ -76,9 +79,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(height: 50),
-
-                    //Platforms and skills
-                    const SkillsDesktop(),
+                    if (Constraints.maxWidth >= kMedWdithDesktop)
+                      SkillsDesktop()
+                    else
+                      SkillsMobile(),
                   ],
                 ),
               ),
@@ -146,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              //FOOTER
+              //EDUCATION
               Container(
                 padding: const EdgeInsets.fromLTRB(24, 20, 25, 60),
                 width: screenWidth,
@@ -170,6 +174,9 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              SizedBox(height: 30.0),
+              // Contact Section
+              ContactSection(),
             ],
           ),
         );
