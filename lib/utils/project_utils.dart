@@ -39,4 +39,18 @@ List<ProjectUtils> myProjectUtils = [
         "A company profile website for Yayasan Pendidikan Budi Utomo Depok, showcasing the schools under its foundation.",
     link1: "https://ypbudiutomodepok.sch.id/",
   ),
+  ProjectUtils(
+    image: "assets/projects/4.png",
+    title: "CleanCare App",
+    subtitle:
+        "A task management platform for cleaning staff and supervisors, enabling daily work tracking, efficient task monitoring, and seamless coordination using Flutter and REST API.",
+    link1: "https://github.com/IlhamAbdul07/Flutter-CleanCare",
+  ),
+  ProjectUtils(
+    image: "assets/projects/5.png",
+    title: "Building Management Binus",
+    subtitle:
+        "A web-based event submission system that helps building management prepare facilities and prioritize tasks using the AHP method, built with Flutter and REST API.",
+    link1: "https://bmbinus.my.id/",
+  ),
 ];
