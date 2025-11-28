@@ -66,4 +66,9 @@ List<CertificateUtils> myCertificateUtils = [
     title: "Mastering Javascript Object Oriented Programming",
     subtitle: "Issued by Codepolitan Oct 2024",
   ),
+  CertificateUtils(
+    image: "assets/certificates/6.png",
+    title: "Flutter Bootcamp Completion",
+    subtitle: "Issued by Nusacodes Oct 2025",
+  ),
 ];
