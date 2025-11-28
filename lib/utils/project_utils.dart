@@ -44,7 +44,7 @@ List<ProjectUtils> myProjectUtils = [
     title: "CleanCare App",
     subtitle:
         "A task management platform for cleaning staff and supervisors, enabling daily work tracking, efficient task monitoring, and seamless coordination using Flutter and REST API.",
-    link1: "https://github.com/IlhamAbdul07/Flutter-CleanCare",
+    link2: "https://github.com/IlhamAbdul07/Flutter-CleanCare",
   ),
   ProjectUtils(
     image: "assets/projects/5.png",
